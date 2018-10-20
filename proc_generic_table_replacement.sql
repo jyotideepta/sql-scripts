@@ -1,6 +1,3 @@
-USE [SS_Unit_Discovery]
-GO
-
 /****** Object:  StoredProcedure [dbo].[CURRENT_proc_dev_generic_table_replacement]    Script Date: 10/19/2018 2:34:53 PM ******/
 SET ANSI_NULLS ON
 GO
@@ -13,12 +10,15 @@ GO
 -- 	Dev Start: May 11th, 2018
 -- 	by ACCOUNTS\jyotideepta
 
--- 	Proc to retire (but not remove) old tables with new development 
+-- 	Procedure to retire (but not remove) old tables with new development 
 -- 	tables.
 
--- 	Does not retire connected procs and doesn't have to since new 
--- 	table has all of the old columns of the old table + the same
---	column names and table name.
+--	Use Case:
+
+--	Replacing an old table with bad data being used in an production environment
+--	where the table is connected to and necessary for numerous other database objects.
+-- 	This procedure allows for such tables to be easy swapped with a new table of
+-- 	better data.
 
 -- 	For this procedure to work there are some initial requirements
 -- 	(the code won't do anything unless each is met).
@@ -31,7 +31,7 @@ GO
 --	link between OLD_id in the OLD table and DEV_id in the DEV table.
 
 
-ALTER PROCEDURE [dbo].[CURRENT_proc_dev_generic_table_replacement]
+CREATE PROCEDURE [dbo].[proc_generic_table_replacement]
 	@oldTableName nvarchar(30)
 AS
 	-- Algorithm variables in order of appearance in code.
