@@ -1,1 +1,2 @@
-# sql-scripts
+# SQL Scripts
+### by Deep Jyoti
