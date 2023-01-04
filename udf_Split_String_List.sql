@@ -1,6 +1,3 @@
-USE [SS_Unit_Discovery]
-GO
-
 /****** Object:  UserDefinedFunction [dbo].[udf_Split_String_List]    Script Date: 1/9/2019 2:00:57 PM ******/
 SET ANSI_NULLS ON
 GO
